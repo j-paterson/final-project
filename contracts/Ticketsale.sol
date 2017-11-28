@@ -17,12 +17,13 @@ contract Ticketsale {
 	uint public remainingTickets;
 	uint public ticketCost;
 	uint public maxTickets;
-	address[] players;
+	address[] buyers;
+
 	struct Buyer {
-	   uint amountBet;
 	   uint ticketNumber;
 	}
-	mapping(address => Player) playerInfo;
+
+	mapping(address => Buyer) buyerInfo;
 
 	event TicketSold(address receiver, bool status);
 	event EtherRefunded(address receiver, bool status);
@@ -42,36 +43,34 @@ contract Ticketsale {
 		_;
 	}
 
-	function Ticketsale(
-		uint256 _totalSupply, uint256 _ticketCost, uint256 _maxTickets)
-	{
+	function Ticketsale(uint256 _totalSupply, uint256 _ticketCost, uint256 _maxTickets, uint256 _showDate) public{
 		saleOpens = now;
-		showDate = SafeMath.add(saleOpens, SafeMath.mul(_timeInMinutesForFundraising, 1 minutes));
-		//showDate = saleOpens + (_timeInMinutesForFundraising * 1 minutes);
+		showDate = SafeMath.add(saleOpens, SafeMath.mul(_showDate, 1 minutes));
 		creator = msg.sender;
 		remainingTickets = _totalSupply;
 		ticketCost = _ticketCost;
 		maxTickets = _maxTickets;
+		showDate = _showDate;
 	}
 
-	function deliver() payable saleHasNotEnded() returns (bool) {
+	/*
+	function purchaseTicket() saleHasNotEnded() public returns (bool)  {
 		return true;
 	}
+	*/
 
-
-	function refund(uint256 amount) returns (bool) {
-		bool good = ticket.refund(msg.sender, amount);
+	function refund() public returns (bool) {
+		bool good = true;
 		if (good) {
-			uint256 refundAmount = tokenToWei(amount);
-			good = msg.sender.send(refundAmount);
+			good = msg.sender.send(ticketCost);
 		}
 		EtherRefunded(msg.sender, good); // event
 		return good;
 	}
 
-	function withdrawFunds() saleHasEnded() isCreator() returns (bool) {
+	function withdrawFunds() saleHasEnded() isCreator() public returns (bool) {
 		return creator.send(currentBalence);
-		selfdestruct(owner);
+		selfdestruct(creator);
 	}
 
 }

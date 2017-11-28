@@ -1,0 +1,27 @@
+{
+  "contract_name": "Ticket",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "shred",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b60405160208061010d833981016040528080519150505b60008054600160a060020a031916600160a060020a0383161790555b505b60bb806100526000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416634302885d8114603c575b600080fd5b3415604657600080fd5b604c604e565b005b6000543373ffffffffffffffffffffffffffffffffffffffff90811691161415608c5760005473ffffffffffffffffffffffffffffffffffffffff16ff5b5b5600a165627a7a72305820a4244a508f8c702a971676ef60ccc13a787fbdbab6528bba6cad22de2c09c5990029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1511855175129
+}
