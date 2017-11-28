@@ -14,7 +14,7 @@ Now it's time to tie all this knowledge together into one final project. Your pr
 
 We're going to be making a **full-stack DApp** using Solidity, Truffle, web3.js, some popular JavaScript front-end framework (React, Angular, Vue, etc.) **or** an additional back-end component. We will be doing this using Test-Driven Development (TDD), so we will be expecting tests in the second deliverable.
 
-By the end of this, we expect you to be able to submit to: https://www.stateofthedapps.com/ 
+By the end of this, we expect you to be able to submit to: https://www.stateofthedapps.com/
 
 Cool right? There's less than a thousand real DApps in existence let alone working ones are ~200. This will be a great way to get hired by any company in tech as it shows off open source contributions.
 
